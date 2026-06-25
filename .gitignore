@@ -20,7 +20,8 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-.env.deploy          # ← real VPS credentials — NEVER commit this
+# real VPS credentials — NEVER commit this:
+.env.deploy
 
 # Editor directories
 .vscode/*
