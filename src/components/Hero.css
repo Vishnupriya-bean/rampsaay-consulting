@@ -1,0 +1,241 @@
+/* ── Hero Section ───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: linear-gradient(135deg, #faf7f2 0%, #f5ede0 40%, #ecdccc 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Decorative orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.45;
+}
+.hero-orb--1 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, #e8c4a8 0%, transparent 70%);
+  top: -120px;
+  right: -100px;
+}
+.hero-orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #f0d4bc 0%, transparent 70%);
+  bottom: 60px;
+  left: -80px;
+}
+
+/* Layout */
+.hero-inner {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── Left ────────────────────────────────────── */
+.hero-left { display: flex; flex-direction: column; gap: 28px; }
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  width: fit-content;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rust);
+  flex-shrink: 0;
+}
+.hero-badge-sep { opacity: 0.4; }
+
+/* Heading */
+.hero-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.hero-heading--italic {
+  font-style: italic;
+  color: var(--rust);
+  font-weight: 600;
+}
+
+/* Paragraph */
+.hero-para {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 520px;
+}
+.highlight { color: var(--rust); }
+
+/* Buttons */
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.btn-primary:hover {
+  background: var(--rust-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 58, 26, 0.28);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid rgba(26, 26, 26, 0.25);
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.btn-outline:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 58, 26, 0.12);
+}
+.btn-outline:active { transform: translateY(0); }
+
+/* ── Right — Quote Card ──────────────────────── */
+.hero-right { display: flex; justify-content: flex-end; }
+
+.quote-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.quote-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.quote-text {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.quote-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--rust-pale);
+  color: var(--rust);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+}
+.quote-meta { display: flex; flex-direction: column; gap: 2px; }
+.quote-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.quote-sub {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+}
+
+/* ── Scroll Indicator ────────────────────────── */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 32px;
+}
+.scroll-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--rust) 0%, transparent 100%);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 20px 40px;
+  }
+  .hero-right { justify-content: flex-start; }
+  .quote-card { max-width: 100%; }
+}

@@ -1,0 +1,106 @@
+/* ── Contact Section ────────────────────────────────────────── */
+.contact {
+  background: linear-gradient(160deg, #faf5ee 0%, #f7f0e6 50%, #faf5ee 100%);
+  padding: 120px 0 140px;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ── Header ──────────────────────────────────── */
+.contact-head {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ── Cards ───────────────────────────────────── */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 760px;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.contact-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+  border-color: rgba(139, 58, 26, 0.22);
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.contact-card-icon {
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+}
+
+.contact-card-type {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.contact-card-value {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.contact-card-note {
+  font-size: 0.78rem;
+  color: var(--rust);
+  line-height: 1.5;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 640px) {
+  .contact-cards { grid-template-columns: 1fr; }
+  .contact-inner { padding: 0 20px; }
+  .contact { padding: 80px 0 100px; }
+}

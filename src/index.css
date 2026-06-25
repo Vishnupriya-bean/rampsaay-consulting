@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #faf7f2;
+  color: #1a1a1a;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── CSS Variables ──────────────────────────────────────────── */
+:root {
+  --cream:        #faf7f2;
+  --cream-mid:    #f0ebe2;
+  --warm-beige:   #e8dfd0;
+  --rust:         #8b3a1a;
+  --rust-light:   #c4552a;
+  --rust-pale:    #f5ece6;
+  --text-dark:    #1a1a1a;
+  --text-mid:     #4a4a4a;
+  --text-soft:    #7a7066;
+  --card-bg:      #ffffff;
+  --border:       rgba(139, 58, 26, 0.12);
+  --shadow:       0 4px 32px rgba(139, 58, 26, 0.08);
+  --shadow-hover: 0 12px 48px rgba(139, 58, 26, 0.16);
+  --radius:       16px;
+  --nav-h:        68px;
+  --serif:        'Playfair Display', serif;
+  --sans:         'Inter', sans-serif;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--warm-beige); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rust); }
+
+/* ── Selection ──────────────────────────────────────────────── */
+::selection { background: var(--rust-pale); color: var(--rust); }
