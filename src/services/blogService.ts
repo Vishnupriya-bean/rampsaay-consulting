@@ -18,11 +18,13 @@ export interface Blog {
 
 /**
  * Helper to get the full image URL from a Directus file ID
+ * Automatically applies image optimization to reduce load times
  */
 export const getImageUrl = (imageId: string) => {
   if (!imageId) return '';
   if (imageId.startsWith('http')) return imageId;
-  return `${DIRECTUS_URL}/assets/${imageId}`;
+  // Use Directus transformations to compress the image
+  return `${DIRECTUS_URL}/assets/${imageId}?width=800&quality=80&format=webp`;
 };
 
 /**
