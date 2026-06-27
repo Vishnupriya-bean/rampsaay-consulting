@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Contact from './components/Contact';
+import Home from './pages/Home';
+import BlogDetail from './pages/BlogDetail';
 import './index.css';
 import './App.css';
 
@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       {/* Page-load transition overlay */}
       <div ref={overlayRef} className="page-overlay" aria-hidden="true">
         <div className="overlay-logo">
@@ -41,11 +41,10 @@ function App() {
 
       {/* App */}
       <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
+      </Routes>
 
       {/* Footer */}
       <footer className="footer">
@@ -59,7 +58,7 @@ function App() {
           </p>
         </div>
       </footer>
-    </>
+    </BrowserRouter>
   );
 }
 

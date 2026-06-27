@@ -1,0 +1,59 @@
+.blog-content-prose {
+  font-family: var(--sans);
+  color: var(--text-dark);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* Drop Cap for the first paragraph */
+.blog-content-prose > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--rust);
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-top: 4px;
+}
+
+.blog-content-prose h2 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  color: var(--rust);
+  margin: 48px 0 24px;
+  scroll-margin-top: calc(var(--nav-h) + 32px); /* For anchor links */
+}
+
+.blog-content-prose h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin: 32px 0 16px;
+  scroll-margin-top: calc(var(--nav-h) + 32px);
+}
+
+.blog-content-prose p {
+  margin-bottom: 24px;
+  color: var(--text-mid);
+}
+
+.blog-content-prose a {
+  color: var(--rust);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.blog-content-prose a:hover {
+  color: var(--rust-light);
+}
+
+.blog-content-prose ul, .blog-content-prose ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+  color: var(--text-mid);
+}
+
+.blog-content-prose li {
+  margin-bottom: 8px;
+}

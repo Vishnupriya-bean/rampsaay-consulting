@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { scrollToSection } from '../utils/scroll';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     gsap.fromTo(
@@ -14,29 +17,43 @@ const Navbar: React.FC = () => {
     );
   }, []);
 
+  const handleNavClick = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${sectionId}`);
+      setTimeout(() => scrollToSection(sectionId), 100);
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
+
   return (
     <nav ref={navRef} className="navbar">
       <div className="navbar-inner">
         {/* Logo */}
-        <div className="navbar-logo">
+        <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
           <span className="logo-dot" />
           <span className="logo-text">Rampsaay Consulting</span>
-        </div>
+        </Link>
 
         {/* Links */}
         <ul className="navbar-links">
           <li>
-            <button className="nav-link" onClick={() => scrollToSection('home')}>
+            <button className="nav-link" onClick={() => handleNavClick('home')}>
               Home
             </button>
           </li>
           <li>
-            <button className="nav-link" onClick={() => scrollToSection('services')}>
+            <button className="nav-link" onClick={() => handleNavClick('services')}>
               Services
             </button>
           </li>
           <li>
-            <button className="nav-link" onClick={() => scrollToSection('contact')}>
+            <button className="nav-link" onClick={() => handleNavClick('latest-insights')}>
+              Blogs
+            </button>
+          </li>
+          <li>
+            <button className="nav-link" onClick={() => handleNavClick('contact')}>
               Contact
             </button>
           </li>
@@ -46,7 +63,7 @@ const Navbar: React.FC = () => {
         <button
           id="get-in-touch-btn"
           className="navbar-cta"
-          onClick={() => scrollToSection('contact')}
+          onClick={() => handleNavClick('contact')}
         >
           Get in touch
         </button>

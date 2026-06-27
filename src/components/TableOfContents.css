@@ -1,0 +1,49 @@
+.toc-nav {
+  position: sticky;
+  top: calc(var(--nav-h) + 32px);
+  padding: 24px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-height: calc(100vh - var(--nav-h) - 64px);
+  overflow-y: auto;
+}
+
+.toc-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toc-item a {
+  text-decoration: none;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.toc-item a:hover {
+  color: var(--rust);
+}
+
+.toc-item.level-3 {
+  padding-left: 16px;
+  font-size: 0.9rem;
+}
+
+.toc-item.active a {
+  color: var(--rust);
+  font-weight: 600;
+}
