@@ -15,7 +15,7 @@ export default function RelatedBlogs({ category, currentSlug }: RelatedBlogsProp
       // Find current blog to pass currentId to service
       const currentBlog = await blogService.getBlogBySlug(currentSlug);
       if (currentBlog) {
-        const blogs = await blogService.getRelatedBlogs(category, currentBlog.id, 3);
+        const blogs = await blogService.getRelatedBlogs(category, currentBlog.id, -1);
         setRelated(blogs);
       }
     };

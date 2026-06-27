@@ -15,7 +15,7 @@ export default function Home() {
       try {
         setLoading(true);
         setError(null);
-        const blogs = await blogService.getLatestBlogs(3);
+        const blogs = await blogService.getAllBlogs();
         setLatestBlogs(blogs);
       } catch (err) {
         console.error("Failed to fetch blogs:", err);
