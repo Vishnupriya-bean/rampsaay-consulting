@@ -2,12 +2,14 @@ import { useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { scrollToSection } from '../utils/scroll';
+import { useHomepage } from '../context/HomepageContext';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const { data } = useHomepage();
 
   useEffect(() => {
     gsap.fromTo(
@@ -32,19 +34,19 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
           <span className="logo-dot" />
-          <span className="logo-text">Rampsaay Consulting</span>
+          <span className="logo-text">{data?.company_name_in_component || 'Rampsaay Consulting'}</span>
         </Link>
 
         {/* Links */}
         <ul className="navbar-links">
           <li>
             <button className="nav-link" onClick={() => handleNavClick('home')}>
-              Home
+              {data?.nav_home || 'Home'}
             </button>
           </li>
           <li>
             <button className="nav-link" onClick={() => handleNavClick('services')}>
-              Services
+              {data?.nav_services || 'Services'}
             </button>
           </li>
           <li>
@@ -54,7 +56,7 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <button className="nav-link" onClick={() => handleNavClick('contact')}>
-              Contact
+              {data?.nav_contact || 'Contact'}
             </button>
           </li>
         </ul>
@@ -65,7 +67,7 @@ const Navbar: React.FC = () => {
           className="navbar-cta"
           onClick={() => handleNavClick('contact')}
         >
-          Get in touch
+          {data?.nav_button_text || 'Get in touch'}
         </button>
       </div>
     </nav>

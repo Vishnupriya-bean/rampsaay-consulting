@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { scrollToSection } from '../utils/scroll';
+import { useHomepage } from '../context/HomepageContext';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -10,6 +11,7 @@ const Hero: React.FC = () => {
   const paraRef    = useRef<HTMLParagraphElement>(null);
   const btnsRef    = useRef<HTMLDivElement>(null);
   const quoteRef   = useRef<HTMLDivElement>(null);
+  const { data } = useHomepage();
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -20,6 +22,19 @@ const Hero: React.FC = () => {
       .fromTo(btnsRef.current,   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
       .fromTo(quoteRef.current,  { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8 }, '-=0.7');
   }, []);
+
+  const renderTagline = (text: string) => {
+    const words = text.split(' ');
+    if (words.length <= 2) return text;
+    const lastTwo = words.slice(-2).join(' ');
+    const rest = words.slice(0, -2).join(' ');
+    return (
+      <>
+        {rest}{' '}
+        <em className="hero-heading--italic">{lastTwo}</em>
+      </>
+    );
+  };
 
   return (
     <section id="home" ref={sectionRef} className="hero">
@@ -32,38 +47,38 @@ const Hero: React.FC = () => {
         <div className="hero-left">
           <div ref={badgeRef} className="hero-badge">
             <span className="hero-badge-dot" />
-            <span>Sole Proprietorship</span>
+            <span>{data?.business_type || 'Sole Proprietorship'}</span>
             <span className="hero-badge-sep">·</span>
-            <span>India</span>
+            <span>{data?.country || 'India'}</span>
           </div>
 
           <h1 ref={h1Ref} className="hero-heading">
-            Quiet expertise for{' '}
-            <em className="hero-heading--italic">loud transformations.</em>
+            {data?.tagline ? renderTagline(data.tagline) : (
+              <>
+                Quiet expertise for{' '}
+                <em className="hero-heading--italic">loud transformations.</em>
+              </>
+            )}
           </h1>
 
           <p ref={paraRef} className="hero-para">
-            <strong>Rampsaay Consulting</strong> helps leaders move from{' '}
-            <span className="highlight">intent to outcome</span> — across{' '}
-            <span className="highlight">digital transformation</span>,{' '}
-            <span className="highlight">AI innovation &amp; inclusion</span>, and{' '}
-            <span className="highlight">IT delivery execution</span>.
+            {data?.description || 'Rampsaay Consulting helps leaders move from intent to outcome — across digital transformation, AI innovation & inclusion, and IT delivery execution.'}
           </p>
 
           <div ref={btnsRef} className="hero-btns">
             <button
               id="start-conversation-btn"
               className="btn-primary"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection(data?.primary_button_link || 'contact')}
             >
-              Start a conversation
+              {data?.primary_button_text || 'Start a conversation'}
             </button>
             <button
               id="explore-services-btn"
               className="btn-outline"
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection(data?.secondary_button_link || 'services')}
             >
-              Explore services
+              {data?.secondary_button_text || 'Explore services'}
             </button>
           </div>
         </div>
@@ -72,13 +87,13 @@ const Hero: React.FC = () => {
         <div ref={quoteRef} className="hero-right">
           <div className="quote-card">
             <blockquote className="quote-text">
-              "Strategy that ships. Technology that includes. Delivery that holds."
+              "{data?.quote || 'Strategy that ships. Technology that includes. Delivery that holds.'}"
             </blockquote>
             <div className="quote-author">
-              <div className="quote-avatar">R</div>
+              <div className="quote-avatar">{data?.company_name_in_component?.charAt(0) || 'R'}</div>
               <div className="quote-meta">
-                <span className="quote-name">Rampsaay Consulting</span>
-                <span className="quote-sub">Practice principles</span>
+                <span className="quote-name">{data?.company_name_in_component || 'Rampsaay Consulting'}</span>
+                <span className="quote-sub">{data?.company_policy || 'Practice principles'}</span>
               </div>
             </div>
           </div>

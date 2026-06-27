@@ -10,8 +10,11 @@ import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { useHomepage } from './context/HomepageContext';
+
 function App() {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const { data } = useHomepage();
 
   /* ── Page-load wipe-out animation ─────────────────────────── */
   useEffect(() => {
@@ -35,7 +38,7 @@ function App() {
       <div ref={overlayRef} className="page-overlay" aria-hidden="true">
         <div className="overlay-logo">
           <span className="overlay-dot" />
-          <span className="overlay-text">Rampsaay Consulting</span>
+          <span className="overlay-text">{data?.company_name || 'Rampsaay Consulting'}</span>
         </div>
       </div>
 
@@ -51,10 +54,10 @@ function App() {
         <div className="footer-inner">
           <div className="footer-brand">
             <span className="logo-dot" />
-            <span className="footer-name">Rampsaay Consulting</span>
+            <span className="footer-name">{data?.footer_company_name || 'Rampsaay Consulting'}</span>
           </div>
           <p className="footer-copy">
-            © {new Date().getFullYear()} Rampsaay Consulting. Sole Proprietorship · India.
+            {data?.footer_copyright || `© ${new Date().getFullYear()} Rampsaay Consulting. Sole Proprietorship · India.`}
           </p>
         </div>
       </footer>

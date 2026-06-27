@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useHomepage } from '../context/HomepageContext';
 import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,6 +10,7 @@ const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headRef    = useRef<HTMLDivElement>(null);
   const cardsRef   = useRef<HTMLDivElement>(null);
+  const { data } = useHomepage();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,11 +45,12 @@ const Contact: React.FC = () => {
       <div className="contact-inner">
         {/* Header */}
         <div ref={headRef} className="contact-head">
-          <span className="section-label">03 · Contact</span>
-          <h2 className="contact-title">Let&apos;s talk.</h2>
+          <span className="section-label">
+            {data?.section_number || '03'} · {data?.section3_label || 'Contact'}
+          </span>
+          <h2 className="contact-title">{data?.contact_heading || "Let's talk."}</h2>
           <p className="contact-subtitle">
-            A short note about your context is the best place to start.
-            We&apos;ll reply within two business days.
+            {data?.contact_description || "A short note about your context is the best place to start. We'll reply within two business days."}
           </p>
         </div>
 
@@ -55,7 +58,7 @@ const Contact: React.FC = () => {
         <div ref={cardsRef} className="contact-cards">
           {/* Email */}
           <a
-            href="mailto:hello@rampsaayconsulting.xyz"
+            href={`mailto:${data?.email || 'hello@rampsaayconsulting.xyz'}`}
             className="contact-card"
             id="contact-email-card"
           >
@@ -67,17 +70,17 @@ const Contact: React.FC = () => {
                   <path d="M2 7l10 7 10-7"/>
                 </svg>
               </span>
-              <span className="contact-card-type">Email</span>
+              <span className="contact-card-type">{data?.email_label || 'Email'}</span>
             </div>
-            <span className="contact-card-value">hello@rampsaayconsulting.xyz</span>
+            <span className="contact-card-value">{data?.email || 'hello@rampsaayconsulting.xyz'}</span>
             <span className="contact-card-note">
-              Best for proposals, briefs, and detailed introductions.
+              {data?.email_description || 'Best for proposals, briefs, and detailed introductions.'}
             </span>
           </a>
 
           {/* Phone */}
           <a
-            href="tel:+919818273612"
+            href={`tel:${(data?.phone || '+91 98182 73612').replace(/\s+/g, '')}`}
             className="contact-card"
             id="contact-phone-card"
           >
@@ -88,11 +91,11 @@ const Contact: React.FC = () => {
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.46-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                 </svg>
               </span>
-              <span className="contact-card-type">Phone</span>
+              <span className="contact-card-type">{data?.phone_label || 'Phone'}</span>
             </div>
-            <span className="contact-card-value">+91 98182 73612</span>
+            <span className="contact-card-value">{data?.phone || '+91 98182 73612'}</span>
             <span className="contact-card-note">
-              Business hours, India Standard Time.
+              {data?.phone_description || 'Business hours, India Standard Time.'}
             </span>
           </a>
         </div>
