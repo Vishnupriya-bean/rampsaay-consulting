@@ -57,3 +57,52 @@
 .blog-content-prose li {
   margin-bottom: 8px;
 }
+
+.blog-content-prose h4, .blog-content-prose h5, .blog-content-prose h6 {
+  font-family: var(--sans);
+  color: var(--text-dark);
+  margin: 24px 0 12px;
+  font-weight: 600;
+}
+
+.blog-content-prose blockquote {
+  border-left: 4px solid var(--rust);
+  padding-left: 20px;
+  margin: 32px 0;
+  font-style: italic;
+  color: var(--text-mid);
+  background-color: var(--rust-pale, #faf0ee);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.blog-content-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 32px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content-prose pre {
+  background-color: var(--text-dark);
+  color: var(--cream);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 32px 0;
+  font-size: 0.95rem;
+}
+
+.blog-content-prose code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+.blog-content-prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
