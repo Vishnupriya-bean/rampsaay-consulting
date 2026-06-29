@@ -16,17 +16,12 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    // Decode HTML first if it is entity-encoded
-    const txt = document.createElement("textarea");
-    txt.innerHTML = content;
-    const decodedContent = txt.value;
-
     // Simple regex to extract headings from HTML string
     const regex = /<h([2-3])[^>]*>(.*?)<\/h\1>/g;
     const extracted: TOCItem[] = [];
     let match;
 
-    while ((match = regex.exec(decodedContent)) !== null) {
+    while ((match = regex.exec(content)) !== null) {
       const level = parseInt(match[1]);
       const title = match[2].replace(/<[^>]+>/g, ''); // strip any inner tags
       const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
