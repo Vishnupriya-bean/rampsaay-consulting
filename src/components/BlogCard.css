@@ -117,11 +117,17 @@
   -webkit-line-clamp: 4;
 }
 
+.bce-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .bce-read-more {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: auto;
   font-family: var(--sans);
   font-size: 0.85rem;
   font-weight: 600;
@@ -139,6 +145,25 @@
   color: var(--rust);
   border-bottom-color: var(--rust);
   gap: 12px;
+}
+
+.bce-social-share {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bce-social-share a {
+  color: var(--text-dark);
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bce-social-share a:hover {
+  color: var(--rust);
+  transform: translateY(-2px);
 }
 
 /* Tablet & Mobile */

@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
             </button>
           </li>
           <li>
-            <button className="nav-link" onClick={() => handleNavClick('latest-insights')}>
+            <button className="nav-link" onClick={() => navigate('/blogs')}>
               Blogs
             </button>
           </li>

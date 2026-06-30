@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Blogs from './pages/Blogs';
 import BlogDetail from './pages/BlogDetail';
 import './index.css';
 import './App.css';
@@ -46,6 +47,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
       </Routes>
 
