@@ -29,14 +29,12 @@ export default function Blogs() {
   }, []);
 
   return (
-    <main style={{ paddingTop: '100px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {loading && <p style={{ textAlign: 'center', padding: '80px 0' }}>Loading blogs...</p>}
       {error && <p style={{ color: 'red', textAlign: 'center', padding: '80px 0' }}>{error}</p>}
       {!loading && !error && (
         <BlogGrid 
           blogs={blogs} 
-          title="Our Blog" 
-          subtitle="Explore our thoughts on technology, engineering, and consulting." 
         />
       )}
     </main>
